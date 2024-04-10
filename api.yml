@@ -1,0 +1,59 @@
+swagger: '2.0'
+info:
+  title: User Signup API
+  version: 1.0.0
+  description: API for user signup
+host: localhost:5010
+basePath: /api
+schemes:
+  - http
+paths:
+  /signup:
+    post:
+      summary: Sign up a new user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: userData
+          description: User details
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: User's name
+              email:
+                type: string
+                format: email
+                description: User's email address
+              password:
+                type: string
+                format: password
+                description: User's password
+              age:
+                type: integer
+                description: User's age
+              gender:
+                type: string
+                enum: [male, female, other]
+                description: User's gender
+      responses:
+        '201':
+          description: User signed up successfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                description: Indicates if signup was successful
+              message:
+                type: string
+                description: Message indicating successful signup
+        '400':
+          description: Bad request. Invalid input data
+        '500':
+          description: Internal server error. Something went wrong

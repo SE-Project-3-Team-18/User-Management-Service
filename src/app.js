@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const CustomLogger = require('./utils/logger')
 const { errorHandler, CustomError } = require('./utils/error')
 const ServiceRegistryClient = require('./utils/serviceRegistry')
+const signUp = require('./controllers/signUp')
 
 const mongoUrl = config.MONGODB_URI
 const connection = mongoose.connection
@@ -54,6 +55,8 @@ app.get('/api', async (req, res, next) => {
     next(e)
   }
 })
+
+app.use('/api/signUp', signUp)
 
 app.use('/api', errorHandler)
 
