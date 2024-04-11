@@ -58,7 +58,7 @@ const signUp = async (req, res, next) => {
     ) {
       throw new CustomError('Required Fields missing', 400, false)
     }
-    const existingUser = User.findOne({
+    const existingUser = await User.findOne({
       email,
     })
     if (existingUser !== null) {

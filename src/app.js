@@ -56,7 +56,7 @@ app.get('/api', async (req, res, next) => {
   }
 })
 
-app.use('/api/signUp', signUp)
+app.post('/api/signUp', signUp)
 
 app.use('/api', errorHandler)
 
