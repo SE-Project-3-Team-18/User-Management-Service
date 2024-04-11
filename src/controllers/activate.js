@@ -2,6 +2,12 @@ const Otp = require('../models/Otp')
 const User = require('../models/User')
 const { CustomError } = require('../utils/error')
 
+/**
+ * This is a user facing route.
+ * The function `activateAccount` activates a
+ * user account by verifying the provided email and OTP,
+ * updating the user's status to activated, and deleting the OTP record.
+ */
 const activateAccount = async (req, res, next) => {
   try {
     const {

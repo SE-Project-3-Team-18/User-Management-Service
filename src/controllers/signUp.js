@@ -30,6 +30,8 @@ const emailBodyTemplate = `
 `
 
 /**
+ * This is a user facing route.
+ * This route is not to be used for registration of seller.
  * signUp route to create new user (but not activate it).
  * flow of function:
  * - validation
