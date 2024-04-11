@@ -57,3 +57,46 @@ paths:
           description: Bad request. Invalid input data
         '500':
           description: Internal server error. Something went wrong
+  /activate-account:
+    post:
+      summary: Activate user account
+      description: Activates a user account using email and OTP.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          description: Request body
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+                description: Email address of the user.
+              otp:
+                type: string
+                description: One-time password sent to the user.
+      responses:
+        '200':
+          description: Account activated successfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                description: Indicates whether the operation was successful.
+                example: true
+              message:
+                type: string
+                description: A message indicating the result of the operation.
+                example: Account activated successfully
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden - Invalid OTP
+        '404':
+          description: Not Found - User not found
