@@ -37,6 +37,11 @@ const userSchema = new mongoose.Schema({
     enum: ['male', 'female', 'other'],
     required: true,
   },
+  role: {
+    type: String,
+    enum: ['user', 'seller', 'admin'],
+    required: true,
+  },
 }, {
   // Add toJSON option to customize JSON output
   toJSON: {

@@ -91,6 +91,7 @@ const signUp = async (req, res, next) => {
       passwordHash,
       age,
       gender,
+      role: 'user',
       activated: false,
       deleted: false,
       creationDate: new Date(),
