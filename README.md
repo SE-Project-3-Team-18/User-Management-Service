@@ -6,6 +6,7 @@
 PORT = 5000
 SERVICE_NAME = 'template' # for registration with service Registry
 SERVICE_HOST = 'localhost' # for registration with service Registry
+JWT_SECRET = 'shhh....!'
 ATLAS_URI = '..blah..'
 ```
 

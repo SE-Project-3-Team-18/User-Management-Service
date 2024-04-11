@@ -100,3 +100,64 @@ paths:
           description: Forbidden - Invalid OTP
         '404':
           description: Not Found - User not found
+
+  /signIn:
+    post:
+      summary: Sign in to the application
+      description: Signs in a user using email and password.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          description: Request body
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+                description: Email address of the user.
+              password:
+                type: string
+                description: User password.
+      responses:
+        '200':
+          description: Successful sign-in
+          schema:
+            type: object
+            properties:
+              userId:
+                type: string
+                description: ID of the signed-in user.
+                example: "123456"
+              role:
+                type: string
+                description: Role of the signed-in user.
+                example: "user"
+              email:
+                type: string
+                format: email
+                description: Email address of the signed-in user.
+                example: "user@example.com"
+              name:
+                type: string
+                description: Name of the signed-in user.
+                example: "John Doe"
+              activated:
+                type: boolean
+                description: Indicates whether the user account is activated.
+                example: true
+              token:
+                type: string
+                description: Authentication token for the signed-in user.
+                example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        '400':
+          description: Bad request - Mandatory fields missing
+        '401':
+          description: Unauthorized - Invalid credentials
+        '404':
+          description: Not Found - User not found

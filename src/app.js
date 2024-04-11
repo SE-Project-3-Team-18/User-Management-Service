@@ -1,5 +1,3 @@
-// Below code serves as an example , not for use in the project
-
 const config = require('./config/config')
 const express = require('express')
 require('express-async-errors')
@@ -11,6 +9,7 @@ const { errorHandler, CustomError } = require('./utils/error')
 const ServiceRegistryClient = require('./utils/serviceRegistry')
 const signUp = require('./controllers/signUp')
 const activateAccount = require('./controllers/activate')
+const signIn = require('./controllers/signIn')
 
 const mongoUrl = config.MONGODB_URI
 const connection = mongoose.connection
@@ -59,6 +58,7 @@ app.get('/api', async (req, res, next) => {
 
 app.post('/api/signUp', signUp)
 app.post('/api/activate-account', activateAccount)
+app.post('/api/signIn', signIn)
 
 app.use('/api', errorHandler)
 
