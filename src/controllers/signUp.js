@@ -95,7 +95,6 @@ const signUp = async (req, res, next) => {
       gender,
       role: 'user',
       activated: false,
-      deleted: false,
       creationDate: new Date(),
     })
     await newUser.save()
