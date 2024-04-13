@@ -10,6 +10,7 @@ const ServiceRegistryClient = require('./utils/serviceRegistry')
 const signUp = require('./controllers/signUp')
 const activateAccount = require('./controllers/activate')
 const signIn = require('./controllers/signIn')
+const getProfile = require('./controllers/getProfile')
 
 const mongoUrl = config.MONGODB_URI
 const connection = mongoose.connection
@@ -59,6 +60,7 @@ app.get('/api', async (req, res, next) => {
 app.post('/api/signUp', signUp)
 app.post('/api/activate-account', activateAccount)
 app.post('/api/signIn', signIn)
+app.get('/api/profile', getProfile)
 
 app.use('/api', errorHandler)
 

@@ -161,3 +161,40 @@ paths:
           description: Unauthorized - Invalid credentials
         '404':
           description: Not Found - User not found
+  /profile:
+    get:
+      summary: Retrieve user profile
+      description: |
+        Retrieves the profile details of a user.
+      parameters:
+        - name: X-User-Id
+          in: header
+          description: User ID of the user whose profile to retrieve
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              message:
+                type: string
+              details:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  creationDate:
+                    type: string
+                    format: date-time
+                  email:
+                    type: string
+                  age:
+                    type: integer
+                  gender:
+                    type: string
+        404:
+          description: User not found
