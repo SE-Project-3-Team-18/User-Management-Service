@@ -20,6 +20,7 @@ const signIn = async (req, res, next) => {
 
     const user = await User.findOne({
       email,
+      activated: true,
     });
     if (!user) {
       throw new CustomError('User not found', 404, false);
