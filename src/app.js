@@ -5,12 +5,13 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const CustomLogger = require('./utils/logger')
-const { errorHandler, CustomError } = require('./utils/error')
+const { errorHandler } = require('./utils/error')
 const ServiceRegistryClient = require('./utils/serviceRegistry')
 const signUp = require('./controllers/signUp')
 const activateAccount = require('./controllers/activate')
 const signIn = require('./controllers/signIn')
 const getProfile = require('./controllers/getProfile')
+const getEmail = require('./controllers/getEmail')
 
 const mongoUrl = config.MONGODB_URI
 const connection = mongoose.connection
@@ -61,6 +62,7 @@ app.post('/api/signUp', signUp)
 app.post('/api/activate-account', activateAccount)
 app.post('/api/signIn', signIn)
 app.get('/api/profile', getProfile)
+app.get('/api/get-email/:userId', getEmail)
 
 app.use('/api', errorHandler)
 
