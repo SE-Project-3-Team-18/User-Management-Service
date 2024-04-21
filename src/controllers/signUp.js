@@ -105,7 +105,19 @@ const signUp = async (req, res, next) => {
         message: 'SignUp successful, verify your email to proceed',
       })
   } catch (e) {
-    next(e)
+    let error = null
+    if (e instanceof CustomError) {
+      error = e
+    } else if (axios.isAxiosError(e) === true) {
+      if (e.response) {
+        error = new CustomError(e.response?.data?.message, e.response?.status, false)
+      } else {
+        error = new CustomError(`Axios Error: ${e.message}`, 500, true)
+      }
+    } else {
+      error = new CustomError(`Error sending email: ${e.message}`, 500, true)
+    }
+    next(error)
   }
 };
 
