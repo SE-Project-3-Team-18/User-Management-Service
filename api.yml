@@ -198,3 +198,34 @@ paths:
                     type: string
         404:
           description: User not found
+  "/get-email/{userId}":
+    get:
+      summary: "Get User Email"
+      description: "Retrieve user email by user ID"
+      tags:
+        - Internal
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "ID of the user whose email needs to be retrieved"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "object"
+            properties:
+              success:
+                type: "boolean"
+                example: true
+              message:
+                type: "string"
+                example: "Email details"
+              email:
+                type: "string"
+                example: "user@example.com"
+        404:
+          description: "User not found"
+        500:
+          description: "Internal Server Error"
