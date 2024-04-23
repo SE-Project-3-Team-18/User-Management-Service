@@ -12,6 +12,7 @@ const activateAccount = require('./controllers/activate')
 const signIn = require('./controllers/signIn')
 const getProfile = require('./controllers/getProfile')
 const getEmail = require('./controllers/getEmail')
+const upgradeToSeller = require('./controllers/upgradeToSeller')
 
 const mongoUrl = config.MONGODB_URI
 const connection = mongoose.connection
@@ -63,6 +64,7 @@ app.post('/api/activate-account', activateAccount)
 app.post('/api/signIn', signIn)
 app.get('/api/profile', getProfile)
 app.get('/api/get-email/:userId', getEmail)
+app.post('/api/upgrade-to-seller', upgradeToSeller)
 
 app.use('/api', errorHandler)
 

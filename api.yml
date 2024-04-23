@@ -229,3 +229,35 @@ paths:
           description: "User not found"
         500:
           description: "Internal Server Error"
+
+  /upgrade-to-seller:
+    post:
+      summary: Upgrade user to seller role
+      description: |
+        This endpoint upgrades a user to a seller role.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Internal
+      parameters:
+        - in: body
+          name: body
+          description: User ID
+          required: true
+          schema:
+            type: object
+            properties:
+              userId:
+                type: string
+                description: ID of the user to upgrade
+      responses:
+        200:
+          description: User successfully upgraded to seller
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: User upgraded to seller
