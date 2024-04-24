@@ -6,13 +6,13 @@ const upgradeToSeller = async (req, res, next) => {
     const {
       userId,
     } = req.body;
+    console.log(userId)
     if (!userId) {
       throw new CustomError('userId is required', 400, false);
     }
 
     const user = await User.findOne({
       _id: userId,
-      deleted: false,
     });
     if (!user) {
       throw new CustomError('User not found', 404, false);
